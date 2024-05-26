@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
 public class LoginPage extends JFrame implements ActionListener {
    JTextField textfield1;
@@ -75,6 +76,31 @@ public class LoginPage extends JFrame implements ActionListener {
       setVisible(true);
    }
 
+   @Override
+   public void actionPerformed(ActionEvent e) {
+      if (e.getSource() == b1) {
+         try {
+            DatabaseConnection c = new DatabaseConnection();
+            String user = textfield1.getText();
+            @SuppressWarnings("deprecation")
+            String pass = passwordfield1.getText();
+
+            String q = "select * from login where username='" + user + "'and password='" + pass + "'";
+            ResultSet resultSet = c.statement.executeQuery(q);
+
+            if (resultSet.next()) {
+               setVisible(false);
+            }
+            else {
+               JOptionPane.showMessageDialog(null, "Invalid password or username");
+            }
+         } catch (Exception E) {
+            E.printStackTrace();
+         }
+      } else {
+         System.exit(102);
+      }
+   }
    public static void main(String[] args) {
       new LoginPage();
    }
