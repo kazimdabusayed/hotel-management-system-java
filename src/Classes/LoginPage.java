@@ -1,11 +1,16 @@
 package Classes;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class LoginPage extends JFrame {
+public class LoginPage extends JFrame implements ActionListener {
    JTextField textfield1;
    JPasswordField passwordfield1;
+   JButton b1, b2;
 
    LoginPage() {
       // Username
@@ -36,6 +41,30 @@ public class LoginPage extends JFrame {
       setForeground(Color.WHITE);
       passwordfield1.setBackground(new Color(26, 140, 110));
       add(passwordfield1);
+
+      // Image
+      ImageIcon imageIcon = new ImageIcon(ClassLoader.getSystemResource("Icons/Logo.gif"));
+      imageIcon.getImage().getScaledInstance(200, 300, Image.SCALE_DEFAULT);
+      JLabel label = new JLabel(imageIcon);
+      label.setBounds(318, -40, 255, 300);
+      add(label);
+
+      // Button
+      b1 = new JButton("Login");
+      b1.setBounds(40, 180, 120, 30);
+      b1.setFont(new Font("serif", Font.BOLD, 15));
+      b1.setBackground(Color.BLACK);
+      b1.setForeground(Color.WHITE);
+      b1.addActionListener(this);
+      add(b1);
+
+      b2 = new JButton("Cancel");
+      b2.setBounds(180, 180, 120, 30);
+      b2.setFont(new Font("serif", Font.BOLD, 15));
+      b2.setBackground(Color.BLACK);
+      b2.setForeground(Color.WHITE);
+      b2.addActionListener(this);
+      add(b2);
 
       // Frame
       setUndecorated(true);
