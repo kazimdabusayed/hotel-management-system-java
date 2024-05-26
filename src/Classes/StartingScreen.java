@@ -20,6 +20,7 @@ public class StartingScreen extends JFrame {
 
       try {
          Thread.sleep(5000);
+         new LoginPage();
          setVisible(false);
 
       } catch (Exception e) {
