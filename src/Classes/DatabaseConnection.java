@@ -22,8 +22,8 @@ public class DatabaseConnection {
    public DatabaseConnection() {
       System.out.println("Connected to database!");
       try {
-         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/HotelManagementDatabase", "root",
-               "i#%28=7]EJ0b");
+         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotelMs", "root",
+               "A85f559@#$");
          statement = connection.createStatement();
 
       } catch (Exception e) {
