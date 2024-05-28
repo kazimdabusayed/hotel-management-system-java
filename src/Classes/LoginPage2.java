@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.ResultSet;
 
 public class LoginPage2 extends JFrame implements ActionListener{
 
@@ -80,6 +81,34 @@ public class LoginPage2 extends JFrame implements ActionListener{
       setLocation(400, 270);
       setSize(600, 300);
       setVisible(true);
+   }
+
+   @Override
+   public void actionPerformed(ActionEvent e) {
+      if (e.getSource() == b1) {
+         try {
+            DatabaseConnection c = new DatabaseConnection();
+            String user = textField1.getText();
+            @SuppressWarnings("deprecation")
+            String pass = passwordField1.getText();
+
+            String q = "select * from login2 where user_name='" + user + "'and password='" + pass + "'";
+            ResultSet resultSet = c.statement.executeQuery(q);
+
+            if (resultSet.next()) {
+               // new Admin();
+               setVisible(false);
+            }
+            else {
+               JOptionPane.showMessageDialog(null, "Invalid password or username");
+            }
+         } catch (Exception E) {
+            E.printStackTrace();
+         }
+      } else {
+         new DashBoard();
+         setVisible(false);
+      }
    }
    public static void main(String[] args) {
       new LoginPage2();
