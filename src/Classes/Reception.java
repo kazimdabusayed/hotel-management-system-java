@@ -36,7 +36,7 @@ public class Reception extends JFrame{
       setLayout(null);
       ImageIcon imageIconi2 = new ImageIcon(i2);
       JLabel Label2 = new JLabel(imageIconi2);
-      Label2.setBounds(-60, 350, 400, 500);
+      Label2.setBounds(-60, 370, 400, 500);
       Panel1.add(Label2);
 
       // Buttons
@@ -68,7 +68,6 @@ public class Reception extends JFrame{
                // new Room();
             } catch (Exception E) {
                E.printStackTrace();
-
             }
          }
       });
@@ -135,6 +134,132 @@ public class Reception extends JFrame{
          public void actionPerformed(ActionEvent e) {
             try {
                // new ManagerInfo();
+            } catch (Exception E) {
+               E.printStackTrace();
+            }
+         }
+      });
+
+      JButton btnCO = new JButton("CHECKOUT");
+      btnCO.setBounds(30, 270, 200, 30);
+      btnCO.setBackground(Color.BLACK);
+      btnCO.setForeground(Color.WHITE);
+      Panel1.add(btnCO);
+
+      btnCO.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            try {
+               // new CheckOut();
+            } catch (Exception E) {
+               E.printStackTrace();
+            }
+         }
+
+      });
+
+      JButton btnUC = new JButton("Update check in details");
+      btnUC.setBounds(30, 310, 200, 30);
+      btnUC.setBackground(Color.BLACK);
+      btnUC.setForeground(Color.WHITE);
+      Panel1.add(btnUC);
+
+      btnUC.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            try {
+               // new UpdateCheck();
+            } catch (Exception E) {
+               E.printStackTrace();
+            }
+         }
+
+      });
+
+      JButton btnURS = new JButton("Update room status");
+      btnURS.setBounds(30, 350, 200, 30);
+      btnURS.setBackground(Color.BLACK);
+      btnURS.setForeground(Color.WHITE);
+      Panel1.add(btnURS);
+
+      btnURS.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            try {
+               // new UpdateRoom();
+            } catch (Exception E) {
+               E.printStackTrace();
+            }
+         }
+
+      });
+
+      JButton btnPS = new JButton("Pickup service");
+      btnPS.setBounds(30, 390, 200, 30);
+      btnPS.setBackground(Color.BLACK);
+      btnPS.setForeground(Color.WHITE);
+      Panel1.add(btnPS);
+
+      btnPS.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            try {
+               // new Pickup();
+            } catch (Exception E) {
+               E.printStackTrace();
+            }
+         }
+
+      });
+
+      JButton btnSR = new JButton("Search room");
+      btnSR.setBounds(30, 430, 200, 30);
+      btnSR.setBackground(Color.BLACK);
+      btnSR.setForeground(Color.WHITE);
+      Panel1.add(btnSR);
+
+      btnSR.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            try {
+               // new SearchRoom();
+            } catch (Exception E) {
+               E.printStackTrace();
+            }
+         }
+
+      });
+
+      JButton logout = new JButton("Logout");
+      logout.setBounds(30, 470, 95, 30);
+      logout.setBackground(Color.BLACK);
+      logout.setForeground(Color.WHITE);
+      Panel1.add(logout);
+
+      logout.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            try {
+               System.exit(500);
+            } catch (Exception E) {
+               E.printStackTrace();
+            }
+         }
+
+      });
+
+      JButton back = new JButton("back");
+      back.setBounds(140, 470, 95, 30);
+      back.setBackground(Color.BLACK);
+      back.setForeground(Color.WHITE);
+      Panel1.add(back);
+
+      back.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            try {
+               setVisible(false);
+               new DashBoard();
             } catch (Exception E) {
                E.printStackTrace();
             }
