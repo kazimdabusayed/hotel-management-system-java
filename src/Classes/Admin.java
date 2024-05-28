@@ -90,7 +90,7 @@ public class Admin extends JFrame implements ActionListener{
       if (e.getSource() == add_Emplyee) {
          // new AddEmployee();
       } else if (e.getSource() == add_Room) {
-         // new AddRoom();
+         new AddRoom();
       } else if (e.getSource() == add_Drivers) {
          // new AddDriver();
       } else if (e.getSource() == logout) {
