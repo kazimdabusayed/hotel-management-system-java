@@ -1,10 +1,14 @@
 package Classes;
 
-import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 
-public class AddEmployee extends JFrame {
-   JTextField nameText, ageText, SalaryText, PhoneText, NationalIDNum, EmailText;
+public class AddEmployee extends JFrame implements ActionListener{
+   JButton add, back;
+   JComboBox<String> comboBox;
+   JTextField nameText, ageText, salaryText, phoneText, nidNum, emailText;
    JRadioButton radioButtonM, radioButtonF;
 
    AddEmployee() {
@@ -21,14 +25,6 @@ public class AddEmployee extends JFrame {
       name.setFont(new Font("serif", Font.BOLD, 17));
       name.setForeground(Color.WHITE);
       panel.add(name);
-
-      // Textfields
-      nameText = new JTextField();
-      nameText.setBounds(200, 30, 150, 27);
-      nameText.setBackground(new Color(16, 108, 115));
-      nameText.setFont(new Font("Tahoma", Font.BOLD, 14));
-      nameText.setForeground(Color.WHITE);
-      panel.add(nameText);
 
       // Textfields
       nameText = new JTextField();
@@ -81,7 +77,8 @@ public class AddEmployee extends JFrame {
       panel.add(job);
 
       // ComboBox
-      JComboBox<String> comboBox = new JComboBox<>(new String[] {"Front Desk", "House Keeping", "Kitchen Staff", "Room service", "Manager", "Accountant", "Chef"});
+      comboBox = new JComboBox<>(new String[] { "Front Desk", "House Keeping", "Kitchen Staff",
+            "Room service", "Manager", "Accountant", "Chef" });
       comboBox.setBackground(new Color(16, 108, 115));
       comboBox.setBounds(200, 170, 155, 30);
       comboBox.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -94,12 +91,12 @@ public class AddEmployee extends JFrame {
       Salary.setForeground(Color.WHITE);
       panel.add(Salary);
 
-      SalaryText = new JTextField();
-      SalaryText.setBounds(200, 220, 150, 27);
-      SalaryText.setBackground(new Color(16, 108, 115));
-      SalaryText.setFont(new Font("Tahoma", Font.BOLD, 14));
-      SalaryText.setForeground(Color.WHITE);
-      panel.add(SalaryText);
+      salaryText = new JTextField();
+      salaryText.setBounds(200, 220, 150, 27);
+      salaryText.setBackground(new Color(16, 108, 115));
+      salaryText.setFont(new Font("Tahoma", Font.BOLD, 14));
+      salaryText.setForeground(Color.WHITE);
+      panel.add(salaryText);
 
       JLabel Phone = new JLabel("PHONE:");
       Phone.setBounds(60, 270, 150, 27);
@@ -107,38 +104,38 @@ public class AddEmployee extends JFrame {
       Phone.setForeground(Color.WHITE);
       panel.add(Phone);
 
-      PhoneText = new JTextField();
-      PhoneText.setBounds(200, 270, 150, 27);
-      PhoneText.setBackground(new Color(16, 108, 115));
-      PhoneText.setFont(new Font("Tahoma", Font.BOLD, 14));
-      PhoneText.setForeground(Color.WHITE);
-      panel.add(PhoneText);
+      phoneText = new JTextField();
+      phoneText.setBounds(200, 270, 150, 27);
+      phoneText.setBackground(new Color(16, 108, 115));
+      phoneText.setFont(new Font("Tahoma", Font.BOLD, 14));
+      phoneText.setForeground(Color.WHITE);
+      panel.add(phoneText);
 
-      JLabel NationalID = new JLabel("NID NO:");
-      NationalID.setBounds(60, 320, 150, 27);
-      NationalID.setFont(new Font("serif", Font.BOLD, 17));
-      NationalID.setForeground(Color.WHITE);
-      panel.add(NationalID);
+      JLabel nid = new JLabel("NID NO:");
+      nid.setBounds(60, 320, 150, 27);
+      nid.setFont(new Font("serif", Font.BOLD, 17));
+      nid.setForeground(Color.WHITE);
+      panel.add(nid);
 
-      NationalIDNum = new JTextField();
-      NationalIDNum.setBounds(200, 320, 150, 27);
-      NationalIDNum.setBackground(new Color(16, 108, 115));
-      NationalIDNum.setFont(new Font("Tahoma", Font.BOLD, 14));
-      NationalIDNum.setForeground(Color.WHITE);
-      panel.add(NationalIDNum);
+      nidNum = new JTextField();
+      nidNum.setBounds(200, 320, 150, 27);
+      nidNum.setBackground(new Color(16, 108, 115));
+      nidNum.setFont(new Font("Tahoma", Font.BOLD, 14));
+      nidNum.setForeground(Color.WHITE);
+      panel.add(nidNum);
 
-      JLabel Email = new JLabel("E-MAIL:");
+      JLabel Email = new JLabel("EMAIL:");
       Email.setBounds(60, 370, 150, 27);
       Email.setFont(new Font("serif", Font.BOLD, 17));
       Email.setForeground(Color.WHITE);
       panel.add(Email);
 
-      EmailText = new JTextField();
-      EmailText.setBounds(200, 370, 150, 27);
-      EmailText.setBackground(new Color(16, 108, 115));
-      EmailText.setFont(new Font("Tahoma", Font.BOLD, 14));
-      EmailText.setForeground(Color.WHITE);
-      panel.add(EmailText);
+      emailText = new JTextField();
+      emailText.setBounds(200, 370, 150, 27);
+      emailText.setBackground(new Color(16, 108, 115));
+      emailText.setFont(new Font("Tahoma", Font.BOLD, 14));
+      emailText.setForeground(Color.WHITE);
+      panel.add(emailText);
 
       JLabel AED = new JLabel("ADD EMPLOYEE DETAILS");
       AED.setBounds(450, 24, 445, 35);
@@ -146,12 +143,65 @@ public class AddEmployee extends JFrame {
       AED.setForeground(Color.WHITE);
       panel.add(AED);
 
+      // Buttons
+      add = new JButton("ADD");
+      add.setBounds(80, 420, 100, 30);
+      add.setBackground(Color.BLACK);
+      add.addActionListener(this);
+      add.setForeground(Color.WHITE);
+      panel.add(add);
+
+      back = new JButton("BACK");
+      back.setBounds(200, 420, 100, 30);
+      back.setBackground(Color.BLACK);
+      back.setForeground(Color.WHITE);
+      back.addActionListener(this);
+      panel.add(back);
+
+      // Image
+      ImageIcon imageIcon = new ImageIcon(ClassLoader.getSystemResource("Icons/incorporation.png"));
+      Image image = imageIcon.getImage().getScaledInstance(300, 300, Image.SCALE_DEFAULT);
+      ImageIcon imageIcon1 = new ImageIcon(image);
+      JLabel label = new JLabel(imageIcon1);
+      label.setBounds(500, 100, 300, 300);
+      panel.add(label);
+
       // Frame
       setUndecorated(true);
       setLocation(60, 160);
       setSize(900, 500);
       setLayout(null);
       setVisible(true);
+   }
+
+   @Override
+   public void actionPerformed(ActionEvent e) {
+      if (e.getSource() == add) {
+         String name = nameText.getText();
+         String age = ageText.getText();
+         String salary = salaryText.getText();
+         String phone = phoneText.getText();
+         String email = emailText.getText();
+         String nid = nidNum.getText();
+         String job = (String) comboBox.getSelectedItem();
+         String gender = null;
+         if (radioButtonM.isSelected()) {
+            gender = "Male";
+         } else if (radioButtonF.isSelected()) {
+            gender = "Female";
+         }
+         try {
+            DatabaseConnection c = new DatabaseConnection();
+            String q = "insert into employee values('"+name+"', '"+age+"', '"+gender+"', '"+job+"', '"+salary+"', '"+phone+"', '"+email+"', '"+nid+"')";
+            c.statement.executeUpdate(q);
+            JOptionPane.showMessageDialog(null, "Employee added");
+            setVisible(false);
+         } catch (Exception E) {
+            E.printStackTrace();
+         }
+      } else {
+         setVisible(false);
+      }
    }
    public static void main(String[] args) {
       new AddEmployee();
