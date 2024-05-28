@@ -1,11 +1,14 @@
 package Classes;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class AddDriver extends JFrame {
+public class AddDriver extends JFrame implements ActionListener{
    JTextField nameText, ageText, carCText, carNText, locText;
    JComboBox<String> comboBox, comboBox1;
+   JButton add, back;
 
    AddDriver() {
 
@@ -127,12 +130,60 @@ public class AddDriver extends JFrame {
       locText.setBackground(new Color(16, 108, 115));
       panel.add(locText);
 
+      // Buttons
+      add = new JButton("ADD");
+      add.setBounds(64, 380, 111, 33);
+      add.setBackground(Color.BLACK);
+      add.setForeground(Color.WHITE);
+      add.addActionListener(this);
+      panel.add(add);
+
+      back = new JButton("BACK");
+      back.setBounds(198, 380, 111, 33);
+      back.setBackground(Color.BLACK);
+      back.setForeground(Color.WHITE);
+      back.addActionListener(this);
+      panel.add(back);
+
+      // Images
+      ImageIcon imageIcon = new ImageIcon(ClassLoader.getSystemResource("Icons/license.png"));
+      Image image = imageIcon.getImage().getScaledInstance(300, 300, Image.SCALE_DEFAULT);
+      ImageIcon imageIcon1 = new ImageIcon(image);
+      JLabel label1 = new JLabel(imageIcon1);
+      label1.setBounds(500, 60, 300, 300);
+      panel.add(label1);
+
       // Frame
       setUndecorated(true);
       setLayout(null);
       setSize(900, 500);
       setLocation(23, 230);
       setVisible(true);
+   }
+
+   @Override
+   public void actionPerformed(ActionEvent e) {
+      if (e.getSource() == add) {
+         String name = nameText.getText();
+         String age = ageText.getText();
+         String gender = (String) comboBox.getSelectedItem();
+         String company = carCText.getText();
+         String carname = carNText.getText();
+         String available = (String) comboBox1.getSelectedItem();
+         String location = locText.getText();
+
+         try {
+            DatabaseConnection c = new DatabaseConnection();
+            String q = "insert into driver values('"+name+"', '"+age+"','"+gender+"', '"+company+"', '"+carname+"', '"+available+"', '"+location+"')";
+            c.statement.executeUpdate(q);
+            JOptionPane.showMessageDialog(null, "Driver Added");
+            setVisible(false);
+         } catch (Exception E) {
+            E.printStackTrace();
+         }
+      } else {
+         setVisible(false);
+      }
    }
    public static void main(String[] args) {
       new AddDriver();
