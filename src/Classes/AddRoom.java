@@ -107,6 +107,14 @@ public class AddRoom extends JFrame implements ActionListener{
       b2.addActionListener(this);
       panel.add(b2);
 
+      // Image
+      ImageIcon imageIcon = new ImageIcon(ClassLoader.getSystemResource("Icons/room_service.png"));
+      Image image = imageIcon.getImage().getScaledInstance(300, 300, Image.SCALE_DEFAULT);
+      ImageIcon imageIcon1 = new ImageIcon(image);
+      JLabel label = new JLabel(imageIcon1);
+      label.setBounds(500, 60, 300, 300);
+      panel.add(label);
+
       // Frame
       setUndecorated(true);
       setLocation(20, 200);
