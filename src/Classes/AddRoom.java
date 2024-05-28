@@ -53,7 +53,7 @@ public class AddRoom extends JFrame implements ActionListener{
       t3.setBackground(new Color(16, 108, 115));
       panel.add(t3);
 
-      JLabel l4 = new JLabel("Price");
+      JLabel l4 = new JLabel("Price (tk)");
       l4.setBounds(64, 150, 152, 22);
       l4.setFont(new Font("Tahoma", Font.BOLD, 14));
       l4.setForeground(Color.WHITE);
