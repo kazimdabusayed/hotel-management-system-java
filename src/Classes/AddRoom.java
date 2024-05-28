@@ -1,10 +1,14 @@
 package Classes;
 
-import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 
-public class AddRoom extends JFrame {
+public class AddRoom extends JFrame implements ActionListener{
    JTextField t2, t4;
+   JComboBox<String> t3, t5,t6;
+   JButton b1, b2;
 
    AddRoom() {
       // Panel
@@ -42,7 +46,7 @@ public class AddRoom extends JFrame {
       panel.add(l3);
 
       // Combobox
-      JComboBox<String> t3 = new JComboBox<>(new String[] { "Available", "Occupied" });
+      t3 = new JComboBox<>(new String[] { "Available", "Occupied" });
       t3.setBounds(200, 110, 156, 20);
       t3.setFont(new Font("Tahoma", Font.PLAIN, 14));
       t3.setForeground(Color.WHITE);
@@ -68,7 +72,7 @@ public class AddRoom extends JFrame {
       l5.setForeground(Color.WHITE);
       panel.add(l5);
 
-      JComboBox<String> t5 = new JComboBox<>(new String[] {"Clean", "Dirty"});
+      t5 = new JComboBox<>(new String[] { "Clean", "Dirty" });
       t5.setBounds(200, 190, 156, 20);
       t5.setFont(new Font("Tahoma", Font.PLAIN, 14));
       t5.setForeground(Color.WHITE);
@@ -81,12 +85,27 @@ public class AddRoom extends JFrame {
       l6.setForeground(Color.WHITE);
       panel.add(l6);
 
-      JComboBox<String> t6 = new JComboBox<>(new String[] { "Single bed", "Double Bed" });
+      t6 = new JComboBox<>(new String[] { "Single bed", "Double Bed" });
       t6.setBounds(200, 232, 156, 20);
       t6.setFont(new Font("Tahoma", Font.PLAIN, 14));
       t6.setForeground(Color.WHITE);
       t6.setBackground(new Color(16, 108, 115));
       panel.add(t6);
+
+      // Buttons
+      b1 = new JButton("Add");
+      b1.setBounds(64, 321, 111, 33);
+      b1.setBackground(Color.BLACK);
+      b1.setForeground(Color.WHITE);
+      b1.addActionListener(this);
+      panel.add(b1);
+
+      b2 = new JButton("Back");
+      b2.setBounds(198, 321, 111, 33);
+      b2.setBackground(Color.BLACK);
+      b2.setForeground(Color.WHITE);
+      b2.addActionListener(this);
+      panel.add(b2);
 
       // Frame
       setUndecorated(true);
@@ -95,6 +114,31 @@ public class AddRoom extends JFrame {
       setSize(885, 500);
       setVisible(true);
    }
+
+   @Override
+   public void actionPerformed(ActionEvent e) {
+      if (e.getSource() == b1) {
+         try {
+            DatabaseConnection c = new DatabaseConnection();
+            String room = t2.getText();
+            String Availability = (String) t3.getSelectedItem();
+            String status = (String) t5.getSelectedItem();
+            String price = t4.getText();
+            String type = (String) t6.getSelectedItem();
+
+            String q = "insert into room values('" + room + "','" + Availability + "','" + status + "','" + price + "','" + type + "')";
+            c.statement.executeUpdate(q);
+            JOptionPane.showMessageDialog(null, "Room Successfully Added");
+            this.setVisible(false);
+
+         } catch (Exception E) {
+            E.printStackTrace();
+         }
+      } else {
+         setVisible(false);
+      }
+   }
+
    public static void main(String[] args) {
       new AddRoom();
    }
