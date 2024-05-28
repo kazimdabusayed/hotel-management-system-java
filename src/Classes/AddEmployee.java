@@ -68,7 +68,7 @@ public class AddEmployee extends JFrame {
       panel.add(radioButtonM);
 
       radioButtonF = new JRadioButton("FEMALE");
-      radioButtonF.setBounds(280, 120, 90, 27);
+      radioButtonF.setBounds(275, 120, 90, 27);
       radioButtonF.setBackground(new Color(3, 45, 48));
       radioButtonF.setFont(new Font("Tahoma", Font.BOLD, 14));
       radioButtonF.setForeground(Color.WHITE);
@@ -113,6 +113,38 @@ public class AddEmployee extends JFrame {
       PhoneText.setFont(new Font("Tahoma", Font.BOLD, 14));
       PhoneText.setForeground(Color.WHITE);
       panel.add(PhoneText);
+
+      JLabel NationalID = new JLabel("NID NO:");
+      NationalID.setBounds(60, 320, 150, 27);
+      NationalID.setFont(new Font("serif", Font.BOLD, 17));
+      NationalID.setForeground(Color.WHITE);
+      panel.add(NationalID);
+
+      NationalIDNum = new JTextField();
+      NationalIDNum.setBounds(200, 320, 150, 27);
+      NationalIDNum.setBackground(new Color(16, 108, 115));
+      NationalIDNum.setFont(new Font("Tahoma", Font.BOLD, 14));
+      NationalIDNum.setForeground(Color.WHITE);
+      panel.add(NationalIDNum);
+
+      JLabel Email = new JLabel("E-MAIL:");
+      Email.setBounds(60, 370, 150, 27);
+      Email.setFont(new Font("serif", Font.BOLD, 17));
+      Email.setForeground(Color.WHITE);
+      panel.add(Email);
+
+      EmailText = new JTextField();
+      EmailText.setBounds(200, 370, 150, 27);
+      EmailText.setBackground(new Color(16, 108, 115));
+      EmailText.setFont(new Font("Tahoma", Font.BOLD, 14));
+      EmailText.setForeground(Color.WHITE);
+      panel.add(EmailText);
+
+      JLabel AED = new JLabel("ADD EMPLOYEE DETAILS");
+      AED.setBounds(450, 24, 445, 35);
+      AED.setFont(new Font("Tahoma", Font.BOLD, 30));
+      AED.setForeground(Color.WHITE);
+      panel.add(AED);
 
       // Frame
       setUndecorated(true);
