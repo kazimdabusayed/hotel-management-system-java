@@ -35,15 +35,15 @@ public class Admin extends JFrame implements ActionListener{
       add(add_Drivers);
 
       logout = new JButton("Logout");
-      logout.setBounds(40, 900, 95, 30);
+      logout.setBounds(40, 670, 95, 30);
       logout.setBackground(Color.BLACK);
       logout.setForeground(Color.WHITE);
       logout.setFont(new Font("Tahoma", Font.BOLD, 15));
       logout.addActionListener(this);
       add(logout);
 
-      back = new JButton(" Back");
-      back.setBounds(150, 900, 95, 30);
+      back = new JButton("Back");
+      back.setBounds(170, 670, 95, 30);
       back.setBackground(Color.BLACK);
       back.setForeground(Color.WHITE);
       back.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -51,7 +51,7 @@ public class Admin extends JFrame implements ActionListener{
       add(back);
 
       //Image
-      ImageIcon L1 = new ImageIcon(ClassLoader.getSystemResource("Icons/new-employee.png"));
+      ImageIcon L1 = new ImageIcon(ClassLoader.getSystemResource("Icons/new_employee.png"));
       Image L11 = L1.getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT);
       ImageIcon imageIcon1 = new ImageIcon(L11);
       JLabel label = new JLabel(imageIcon1);
@@ -83,6 +83,22 @@ public class Admin extends JFrame implements ActionListener{
       setLayout(null);
       setSize(1950, 1090);
       setVisible(true);
+   }
+
+   @Override
+   public void actionPerformed(ActionEvent e) {
+      if (e.getSource() == add_Emplyee) {
+         // new AddEmployee();
+      } else if (e.getSource() == add_Room) {
+         new AddRoom();
+      } else if (e.getSource() == add_Drivers) {
+         // new AddDriver();
+      } else if (e.getSource() == logout) {
+         System.exit(102);
+      } else if (e.getSource() == back) {
+         new DashBoard();
+         setVisible(false);
+      }
    }
    public static void main(String[] args) {
       new Admin();
