@@ -89,6 +89,7 @@ public class LoginPage extends JFrame implements ActionListener {
             ResultSet resultSet = c.statement.executeQuery(q);
 
             if (resultSet.next()) {
+               new DashBoard();
                setVisible(false);
             }
             else {
