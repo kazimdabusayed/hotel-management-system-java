@@ -1,10 +1,55 @@
 package Classes;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class Admin extends JFrame{
+public class Admin extends JFrame implements ActionListener{
+   JButton add_Emplyee, add_Room, add_Drivers, logout, back;
+
    Admin() {
+      // Buttons
+      add_Emplyee = new JButton("ADD EMPLOYEE");
+      add_Emplyee.setBounds(250, 230, 200, 30);
+      add_Emplyee.setBackground(Color.WHITE);
+      add_Emplyee.setForeground(Color.BLACK);
+      add_Emplyee.setFont(new Font("Tahoma", Font.BOLD, 15));
+      add_Emplyee.addActionListener(this);
+      add(add_Emplyee);
+
+      add_Room = new JButton("ADD ROOM");
+      add_Room.setBounds(250, 350, 200, 30);
+      add_Room.setBackground(Color.WHITE);
+      add_Room.setForeground(Color.BLACK);
+      add_Room.setFont(new Font("Tahoma", Font.BOLD, 15));
+      add_Room.addActionListener(this);
+      add(add_Room);
+
+      add_Drivers = new JButton("ADD Driver");
+      add_Drivers.setBounds(250, 480, 200, 30);
+      add_Drivers.setBackground(Color.WHITE);
+      add_Drivers.setForeground(Color.BLACK);
+      add_Drivers.setFont(new Font("Tahoma", Font.BOLD, 15));
+      add_Drivers.addActionListener(this);
+      add(add_Drivers);
+
+      logout = new JButton("Logout");
+      logout.setBounds(40, 900, 95, 30);
+      logout.setBackground(Color.BLACK);
+      logout.setForeground(Color.WHITE);
+      logout.setFont(new Font("Tahoma", Font.BOLD, 15));
+      logout.addActionListener(this);
+      add(logout);
+
+      back = new JButton(" Back");
+      back.setBounds(150, 900, 95, 30);
+      back.setBackground(Color.BLACK);
+      back.setForeground(Color.WHITE);
+      back.setFont(new Font("Tahoma", Font.BOLD, 15));
+      back.addActionListener(this);
+      add(back);
+
       //Image
       ImageIcon L1 = new ImageIcon(ClassLoader.getSystemResource("Icons/new-employee.png"));
       Image L11 = L1.getImage().getScaledInstance(120, 120, Image.SCALE_DEFAULT);
