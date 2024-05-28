@@ -2,11 +2,14 @@ package Classes;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class LoginPage2 extends JFrame {
+public class LoginPage2 extends JFrame implements ActionListener{
 
    JTextField textField1;
    JPasswordField passwordField1;
+   JButton b1, b2;
 
    LoginPage2() {
       // JLabel label1
@@ -38,6 +41,38 @@ public class LoginPage2 extends JFrame {
       passwordField1.setBackground(new Color(26, 104, 110));
       textField1.setFont(new Font("Tahoma", Font.PLAIN, 15));
       add(passwordField1);
+
+      // ImageIcon
+      ImageIcon imageIcon = new ImageIcon(ClassLoader.getSystemResource("Icons/new_logo_admin.png"));
+      Image i1 = imageIcon.getImage().getScaledInstance(255, 300, Image.SCALE_DEFAULT);
+      JLabel label = new JLabel(imageIcon);
+      label.setBounds(325, -32, 255, 300);
+      add(label);
+
+      ImageIcon i2 = new ImageIcon(ClassLoader.getSystemResource("Icons/loginback.png"));
+      Image i22 = i2.getImage().getScaledInstance(600, 300, Image.SCALE_DEFAULT);
+      ImageIcon i23 = new ImageIcon(i22);
+      JLabel image = new JLabel(i23);
+      image.setBounds(0, 0, 600, 300);
+      add(image);
+
+      // Login button
+      b1 = new JButton("Login");
+      b1.setBounds(40, 160, 120, 30);
+      b1.setFont(new Font("serif", Font.BOLD, 15));
+      b1.setBackground(Color.BLACK);
+      b1.setForeground(Color.WHITE);
+      b1.addActionListener(this);
+      add(b1);
+
+      // Cancel button
+      b2 = new JButton("Cancel");
+      b2.setBounds(188, 160, 120, 30);
+      b2.setFont(new Font("serif", Font.BOLD, 15));
+      b2.setBackground(Color.BLACK);
+      b2.setForeground(Color.WHITE);
+      b2.addActionListener(this);
+      add(b2);
 
       // Frame
       getContentPane().setBackground(new Color(3, 45, 48));
