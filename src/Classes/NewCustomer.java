@@ -186,12 +186,40 @@ public class NewCustomer extends JFrame implements ActionListener {
       setVisible(true);
    }
 
-   public static void main(String[] args) {
-      new NewCustomer();
-   }
-
    @Override
    public void actionPerformed(ActionEvent e) {
-      
+      if (e.getSource() == add) {
+         DatabaseConnection c = new DatabaseConnection();
+         String radioBtn = null;
+         if (r1.isSelected()) {
+            radioBtn = "Male";
+         } else if (r2.isSelected()) {
+            radioBtn = "Female";
+         }
+         String s1 = (String) comboBox.getSelectedItem();
+         String s2 = textFieldNumber.getText();
+         String s3 = textFieldName.getText();
+         String s4 = radioBtn;
+         String s5 = textFieldCountry.getText();
+         String s6 = c1.getSelectedItem();
+         String s7 = date.getText();
+         String s8 = textFieldDeposite.getText();
+
+         try {
+            String q = "insert into customer values('"+s1+"', '"+s2+"', '"+s3+"', '"+s4+"', '"+s5+"', '"+s6+"', '"+s7+"', '"+s8+"')";
+            String q1 = "update room set availability='Occupied'where roomnumber=" + s6;
+            c.statement.executeUpdate(q);
+            c.statement.executeUpdate(q1);
+            JOptionPane.showMessageDialog(null, "Added successfully");
+            setVisible(false);
+         } catch (Exception E) {
+            E.printStackTrace();
+         }
+      } else {
+         setVisible(false);
+      }
+   }
+   public static void main(String[] args) {
+      new NewCustomer();
    }
 }
