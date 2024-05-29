@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 public class StartingScreen extends JFrame {
 
    StartingScreen() {
+      super("Hotel Zero Star");
 
       ImageIcon imageIcon = new ImageIcon(ClassLoader.getSystemResource("Icons/StartingScreen.gif"));
       JLabel label = new JLabel(imageIcon);

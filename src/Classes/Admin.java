@@ -9,6 +9,7 @@ public class Admin extends JFrame implements ActionListener{
    JButton add_Emplyee, add_Room, add_Drivers, logout, back;
 
    Admin() {
+      super("Admin | Hotel Zero Star");
       // Buttons
       add_Emplyee = new JButton("ADD EMPLOYEE");
       add_Emplyee.setBounds(250, 230, 200, 30);
