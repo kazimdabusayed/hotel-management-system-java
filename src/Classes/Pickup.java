@@ -3,6 +3,8 @@ package Classes;
 import java.awt.Choice;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import javax.swing.*;
 
@@ -48,7 +50,7 @@ public class Pickup extends JFrame {
 
       // Table
       JTable table = new JTable();
-      table.setBounds(10, 220, 800, 250);
+      table.setBounds(10, 225, 800, 250);
       table.setBackground(new Color(3, 45, 48));
       table.setForeground(Color.WHITE);
       panel.add(table);
@@ -62,10 +64,86 @@ public class Pickup extends JFrame {
          E.printStackTrace();
       }
 
+      // label for name
+      JLabel name = new JLabel("Name");
+      name.setBounds(24, 200, 46, 14);
+      name.setForeground(Color.WHITE);
+      panel.add(name);
+
+      // label for age
+      JLabel age = new JLabel("Age");
+      age.setBounds(165, 200, 46, 14);
+      age.setForeground(Color.WHITE);
+      panel.add(age);
+
+      // label for car gender
+      JLabel gender = new JLabel("Gender");
+      gender.setBounds(264, 200, 46, 14);
+      gender.setForeground(Color.WHITE);
+      panel.add(gender);
+
+      // label for car company
+      JLabel company = new JLabel("Company");
+      company.setBounds(366, 200, 100, 14);
+      company.setForeground(Color.WHITE);
+      panel.add(company);
+
+      // label for car name
+      JLabel carname = new JLabel("Car Name");
+      carname.setBounds(486, 200, 100, 14);
+      carname.setForeground(Color.WHITE);
+      panel.add(carname);
+
+      // label for available
+      JLabel available = new JLabel("Available");
+      available.setBounds(600, 200, 100, 14);
+      available.setForeground(Color.WHITE);
+      panel.add(available);
+
+      // label for location
+      JLabel location = new JLabel("Location");
+      location.setBounds(700, 200, 100, 14);
+      location.setForeground(Color.WHITE);
+      panel.add(location);
+
+      // Display Button
+      JButton display = new JButton("Display");
+      display.setBounds(200, 500, 150, 30);
+      display.setBackground(Color.BLACK);
+      display.setForeground(Color.WHITE);
+      panel.add(display);
+      display.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            String q = "select * from driver where carname= '" + c.getSelectedItem() + "'";
+            try {
+               DatabaseConnection c = new DatabaseConnection();
+               ResultSet resultSet = c.statement.executeQuery(q);
+               table.setModel(DbUtils.resultSetToTableModel(resultSet));
+            } catch (Exception E) {
+               E.printStackTrace();
+            }
+         }
+      });
+
+      // back button
+      JButton back = new JButton("Back");
+      back.setBounds(420, 500, 150, 30);
+      back.setBackground(Color.BLACK);
+      back.setForeground(Color.WHITE);
+      panel.add(back);
+      back.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            setVisible(false);
+         }
+      });
+
       // Frame
+      setUndecorated(true);
       setLayout(null);
       setSize(800, 600);
-      setLocation(500, 100);
+      setLocation(400, 100);
       setVisible(true);
    }
 
