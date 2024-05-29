@@ -1,12 +1,20 @@
 package Classes;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.util.Date;
 import javax.swing.*;
 
-public class NewCustomer extends JFrame {
+public class NewCustomer extends JFrame implements ActionListener {
+
    JComboBox<String> comboBox;
    JTextField textFieldNumber, textFieldName, textFieldCountry, textFieldDeposite;
    JRadioButton r1, r2;
+   Choice c1;
+   JLabel date;
+   JButton add, back;
 
    NewCustomer() {
       super("New Customer | Hotel Zero Star");
@@ -104,6 +112,73 @@ public class NewCustomer extends JFrame {
       textFieldCountry.setBounds(271, 231, 150, 20);
       panel.add(textFieldCountry);
 
+      // Label for Alocated Room
+      JLabel labelRoom = new JLabel("Allocated Room Number:");
+      labelRoom.setBounds(35, 274, 200, 15);
+      labelRoom.setFont(new Font("Tahoma", Font.PLAIN, 14));
+      labelRoom.setForeground(Color.WHITE);
+      panel.add(labelRoom);
+
+      // Choices
+      c1 = new Choice();
+
+      try {
+         DatabaseConnection c = new DatabaseConnection();
+         ResultSet resultSet = c.statement.executeQuery("select * from room");
+         while (resultSet.next()) {
+            c1.add(resultSet.getString("roomnumber"));
+         }
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+      c1.setBounds(271, 274, 150, 20);
+      c1.setFont(new Font("Tahoma", Font.BOLD, 14));
+      c1.setForeground(Color.WHITE);
+      c1.setBackground(new Color(3, 45, 48));
+      panel.add(c1);
+
+      // Label for Checkin status
+      JLabel labelCheckInStatus = new JLabel("Checked-In:");
+      labelCheckInStatus.setBounds(35, 316, 200, 15);
+      labelCheckInStatus.setFont(new Font("Tahoma", Font.PLAIN, 14));
+      labelCheckInStatus.setForeground(Color.WHITE);
+      panel.add(labelCheckInStatus);
+
+      // Date
+      Date date1 = new Date();
+      date = new JLabel("" + date1);
+      date.setBounds(271, 316, 210, 15);
+      date.setFont(new Font("Tahoma", Font.PLAIN, 14));
+      date.setForeground(Color.WHITE);
+      panel.add(date);
+
+      // Label for deposite
+      JLabel labelDeposite = new JLabel("Deposite:");
+      labelDeposite.setBounds(35, 359, 200, 15);
+      labelDeposite.setFont(new Font("Tahoma", Font.PLAIN, 14));
+      labelDeposite.setForeground(Color.WHITE);
+      panel.add(labelDeposite);
+
+      // Textfield for deposite
+      textFieldDeposite = new JTextField();
+      textFieldDeposite.setBounds(271, 359, 150, 20);
+      panel.add(textFieldDeposite);
+
+      // Buttons
+      add = new JButton("ADD");
+      add.setBounds(100, 430, 120, 30);
+      add.setForeground(Color.WHITE);
+      add.setBackground(Color.BLACK);
+      add.addActionListener(this);
+      panel.add(add);
+
+      back = new JButton("BACK");
+      back.setBounds(260, 430, 120, 30);
+      back.setForeground(Color.WHITE);
+      back.setBackground(Color.BLACK);
+      back.addActionListener(this);
+      panel.add(back);
+
       // Frame
       setLayout(null);
       setLocation(500, 150);
@@ -113,5 +188,10 @@ public class NewCustomer extends JFrame {
 
    public static void main(String[] args) {
       new NewCustomer();
+   }
+
+   @Override
+   public void actionPerformed(ActionEvent e) {
+      
    }
 }
