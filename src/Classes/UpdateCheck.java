@@ -4,11 +4,13 @@ import java.awt.Choice;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 
 import javax.swing.*;
 
-public class UpdateCheck extends JFrame{
+public class UpdateCheck extends JFrame {
    UpdateCheck() {
       JPanel panel = new JPanel();
       panel.setBounds(5, 5, 940, 490);
@@ -95,7 +97,7 @@ public class UpdateCheck extends JFrame{
 
       // Label for Pending ammount
       JLabel label7 = new JLabel("Pending Amount (Tk) :");
-      label7.setBounds(25, 302, 150, 16);
+      label7.setBounds(25, 302, 150, 18);
       label7.setFont(new Font("Tahoma", Font.PLAIN, 14));
       label7.setForeground(Color.WHITE);
       panel.add(label7);
@@ -104,6 +106,82 @@ public class UpdateCheck extends JFrame{
       textField7.setBounds(248, 302, 140, 20);
       panel.add(textField7);
 
+      // update button
+      JButton update = new JButton("Update");
+      update.setBounds(56, 378, 89, 23);
+      update.setBackground(Color.BLACK);
+      update.setForeground(Color.WHITE);
+      panel.add(update);
+
+      update.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            try {
+               DatabaseConnection C = new DatabaseConnection();
+               String q = c.getSelectedItem();
+               String room = textField3.getText();
+               String name = textField4.getText();
+               String check = textField5.getText();
+               String amount = textField6.getText();
+
+               C.statement.executeUpdate("update customer set room = '"+room+"', name = '"+name+"', checkintime = '"+check+"', deposit = '"+amount+"' where number = '"+q+"'");
+
+               JOptionPane.showMessageDialog(null, "Updated Successfully");
+               setVisible(false);
+            } catch (Exception E) {
+               E.printStackTrace();
+            }
+         }
+      });
+
+      // back button
+      JButton back = new JButton("Back");
+      back.setBounds(168, 378, 89, 23);
+      back.setBackground(Color.BLACK);
+      back.setForeground(Color.WHITE);
+      panel.add(back);
+      back.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            setVisible(false);
+         }
+      });
+
+      // check button
+      JButton check = new JButton("Check");
+      check.setBounds(281, 378, 89, 23);
+      check.setBackground(Color.BLACK);
+      check.setForeground(Color.WHITE);
+      panel.add(check);
+      check.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            String id = c.getSelectedItem();
+            String q = "select * from customer where number = '"+id+"'";
+            try {
+               DatabaseConnection c = new DatabaseConnection();
+               ResultSet resultSet = c.statement.executeQuery(q);
+
+               while (resultSet.next()) {
+                  textField3.setText(resultSet.getString("room"));
+                  textField4.setText(resultSet.getString("name"));
+                  textField5.setText(resultSet.getString("checkintime"));
+                  textField6.setText(resultSet.getString("deposit"));
+               }
+
+               ResultSet resultSet1 = c.statement.executeQuery("select * from room where roomnumber = '"+textField3.getText()+"'");
+
+               while (resultSet1.next()) {
+                  String price = resultSet1.getString("price");
+                  int amountPaid = Integer.parseInt(price) - Integer.parseInt(textField6.getText());
+                  textField7.setText(""+amountPaid);
+               }
+            } catch (Exception E) {
+               E.printStackTrace();
+            }
+         }
+      });
+
       // Frame
       setUndecorated(true);
       setLayout(null);
@@ -111,6 +189,7 @@ public class UpdateCheck extends JFrame{
       setLocation(380, 120);
       setVisible(true);
    }
+
    public static void main(String[] args) {
       new UpdateCheck();
    }
