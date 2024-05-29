@@ -26,3 +26,6 @@ insert into department values('Housekeeping', '40000');
 insert into department values('Food', '70000');
 insert into department values('Kitchen', '30000');
 insert into department values('Security', '60000');
+
+create table customer(document varchar(30), number varchar(30), name varchar(30), gender varchar(30), country varchar(30), room varchar(30), checkintime varchar(80), deposit varchar(30));
+select * from customer;
