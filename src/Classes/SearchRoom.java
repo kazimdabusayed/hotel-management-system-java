@@ -1,9 +1,16 @@
 package Classes;
 
 import java.awt.*;
+import java.sql.ResultSet;
 import javax.swing.*;
+import net.proteanit.sql.DbUtils;
 
-public class SearchRoom extends JFrame{
+public class SearchRoom extends JFrame {
+   JCheckBox checkBox;
+   Choice choice;
+   JTable table;
+   JButton add, back;
+
    SearchRoom() {
       JPanel panel = new JPanel();
       panel.setBackground(new Color(3, 45, 48));
@@ -52,6 +59,33 @@ public class SearchRoom extends JFrame{
       SS.setForeground(Color.WHITE);
       SS.setFont(new Font("Tahoma", Font.BOLD, 14));
       panel.add(SS);
+
+      checkBox = new JCheckBox("Only Display Available");
+      checkBox.setBounds(400, 69, 205, 23);
+      checkBox.setForeground(Color.WHITE);
+      checkBox.setBackground(new Color(3, 45, 48));
+      panel.add(checkBox);
+
+      choice = new Choice();
+      choice.add("Single Bed");
+      choice.add("Double Bed");
+      choice.setBounds(170, 70, 120, 20);
+      panel.add(choice);
+
+      table = new JTable();
+      table.setBounds(0, 187, 700, 150);
+      table.setBackground(new Color(3, 45, 48));
+      table.setForeground(Color.WHITE);
+      panel.add(table);
+
+      try {
+         DatabaseConnection c = new DatabaseConnection();
+         String q = "select * from room";
+         ResultSet resultSet = c.statement.executeQuery(q);
+         table.setModel(DbUtils.resultSetToTableModel(resultSet));
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
 
       setUndecorated(true);
       setLayout(null);
