@@ -65,7 +65,7 @@ public class Reception extends JFrame{
          @Override
          public void actionPerformed(ActionEvent e) {
             try {
-               // new Room();
+               new Room();
             } catch (Exception E) {
                E.printStackTrace();
             }
@@ -77,7 +77,6 @@ public class Reception extends JFrame{
       btnDepartment.setBackground(Color.BLACK);
       btnDepartment.setForeground(Color.WHITE);
       Panel1.add(btnDepartment);
-
       btnDepartment.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
@@ -87,14 +86,13 @@ public class Reception extends JFrame{
                E.printStackTrace();
             }
          }
-
       });
+
       JButton btnAEI = new JButton("All Employes Info");
       btnAEI.setBounds(30, 150, 200, 30);
       btnAEI.setBackground(Color.BLACK);
       btnAEI.setForeground(Color.WHITE);
       Panel1.add(btnAEI);
-
       btnAEI.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
@@ -111,7 +109,6 @@ public class Reception extends JFrame{
       btnCI.setBackground(Color.BLACK);
       btnCI.setForeground(Color.WHITE);
       Panel1.add(btnCI);
-
       btnCI.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
@@ -128,7 +125,6 @@ public class Reception extends JFrame{
       btnMI.setBackground(Color.BLACK);
       btnMI.setForeground(Color.WHITE);
       Panel1.add(btnMI);
-
       btnMI.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
@@ -145,7 +141,6 @@ public class Reception extends JFrame{
       btnCO.setBackground(Color.BLACK);
       btnCO.setForeground(Color.WHITE);
       Panel1.add(btnCO);
-
       btnCO.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
@@ -155,7 +150,6 @@ public class Reception extends JFrame{
                E.printStackTrace();
             }
          }
-
       });
 
       JButton btnUC = new JButton("Update check in details");
@@ -163,7 +157,6 @@ public class Reception extends JFrame{
       btnUC.setBackground(Color.BLACK);
       btnUC.setForeground(Color.WHITE);
       Panel1.add(btnUC);
-
       btnUC.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
@@ -173,7 +166,6 @@ public class Reception extends JFrame{
                E.printStackTrace();
             }
          }
-
       });
 
       JButton btnURS = new JButton("Update room status");
@@ -181,7 +173,6 @@ public class Reception extends JFrame{
       btnURS.setBackground(Color.BLACK);
       btnURS.setForeground(Color.WHITE);
       Panel1.add(btnURS);
-
       btnURS.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
@@ -191,7 +182,6 @@ public class Reception extends JFrame{
                E.printStackTrace();
             }
          }
-
       });
 
       JButton btnPS = new JButton("Pickup service");
@@ -199,7 +189,6 @@ public class Reception extends JFrame{
       btnPS.setBackground(Color.BLACK);
       btnPS.setForeground(Color.WHITE);
       Panel1.add(btnPS);
-
       btnPS.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
@@ -209,7 +198,6 @@ public class Reception extends JFrame{
                E.printStackTrace();
             }
          }
-
       });
 
       JButton btnSR = new JButton("Search room");
@@ -217,7 +205,6 @@ public class Reception extends JFrame{
       btnSR.setBackground(Color.BLACK);
       btnSR.setForeground(Color.WHITE);
       Panel1.add(btnSR);
-
       btnSR.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
@@ -227,7 +214,6 @@ public class Reception extends JFrame{
                E.printStackTrace();
             }
          }
-
       });
 
       JButton logout = new JButton("Logout");
@@ -235,7 +221,6 @@ public class Reception extends JFrame{
       logout.setBackground(Color.BLACK);
       logout.setForeground(Color.WHITE);
       Panel1.add(logout);
-
       logout.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
@@ -245,7 +230,6 @@ public class Reception extends JFrame{
                E.printStackTrace();
             }
          }
-
       });
 
       JButton back = new JButton("back");
@@ -253,7 +237,6 @@ public class Reception extends JFrame{
       back.setBackground(Color.BLACK);
       back.setForeground(Color.WHITE);
       Panel1.add(back);
-
       back.addActionListener(new ActionListener() {
          @Override
          public void actionPerformed(ActionEvent e) {
