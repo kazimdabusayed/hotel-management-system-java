@@ -207,7 +207,7 @@ public class NewCustomer extends JFrame implements ActionListener {
 
          try {
             String q = "insert into customer values('"+s1+"', '"+s2+"', '"+s3+"', '"+s4+"', '"+s5+"', '"+s6+"', '"+s7+"', '"+s8+"')";
-            String q1 = "update room set availability='Occupied'where roomnumber=" + s6;
+            String q1 = "update room set availability= 'Occupied' where roomnumber=" + s6;
             c.statement.executeUpdate(q);
             c.statement.executeUpdate(q1);
             JOptionPane.showMessageDialog(null, "Added successfully");

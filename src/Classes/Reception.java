@@ -114,7 +114,7 @@ public class Reception extends JFrame{
          @Override
          public void actionPerformed(ActionEvent e) {
             try {
-               // new CustomerInfo();
+               new CustomerInfo();
             } catch (Exception E) {
                E.printStackTrace();
             }
