@@ -89,7 +89,7 @@ public class Reception extends JFrame{
          }
       });
 
-      JButton btnAEI = new JButton("All Employes Info");
+      JButton btnAEI = new JButton("All Employees Info");
       btnAEI.setBounds(30, 150, 200, 30);
       btnAEI.setBackground(Color.BLACK);
       btnAEI.setForeground(Color.WHITE);
