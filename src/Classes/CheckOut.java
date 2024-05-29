@@ -3,6 +3,8 @@ package Classes;
 import java.awt.Choice;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.util.Date;
 import javax.swing.*;
@@ -79,6 +81,59 @@ public class CheckOut extends JFrame{
       } catch (Exception E) {
          E.printStackTrace();
       }
+
+      JButton checkOut = new JButton("Check-Out");
+      checkOut.setBounds(30, 300, 120, 30);
+      checkOut.setForeground(Color.WHITE);
+      checkOut.setBackground(Color.BLACK);
+      panel.add(checkOut);
+      checkOut.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            try {
+               DatabaseConnection cv = new DatabaseConnection();
+               cv.statement.executeUpdate("delete from customer where number = '" + Customer.getSelectedItem() + "'");
+               cv.statement.executeUpdate("update room set availability = 'Available' where roomnumber = '" + labelRoomNum.getText() + "'");
+               JOptionPane.showMessageDialog(null, "CheckOut Done");
+               setVisible(false);
+            } catch (Exception E) {
+               E.printStackTrace();
+            }
+         }
+      });
+
+      JButton check = new JButton("Check");
+      check.setBounds(300, 300, 120, 30);
+      check.setForeground(Color.WHITE);
+      check.setBackground(Color.BLACK);
+      panel.add(check);
+      check.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            DatabaseConnection c = new DatabaseConnection();
+            try {
+               ResultSet resultSet = c.statement.executeQuery("select * from customer where number = '" + Customer.getSelectedItem() + "'");
+               while (resultSet.next()) {
+                  labelRoomNum.setText(resultSet.getString("room"));
+                  labelCheckinTime.setText(resultSet.getString("checkintime"));
+               }
+            } catch (Exception E) {
+               E.printStackTrace();
+            }
+         }
+      });
+
+      JButton back = new JButton("Back");
+      back.setBounds(170, 300, 120, 30);
+      back.setForeground(Color.WHITE);
+      back.setBackground(Color.BLACK);
+      panel.add(back);
+      back.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            setVisible(false);
+         }
+      });
 
       setUndecorated(true);
       setLayout(null);
