@@ -17,7 +17,6 @@ public class NewCustomer extends JFrame implements ActionListener {
    JButton add, back;
 
    NewCustomer() {
-      super("New Customer | Hotel Zero Star");
       // Panel
       JPanel panel = new JPanel();
       panel.setBounds(5, 5, 840, 540);
@@ -180,8 +179,9 @@ public class NewCustomer extends JFrame implements ActionListener {
       panel.add(back);
 
       // Frame
+      setUndecorated(true);
       setLayout(null);
-      setLocation(500, 150);
+      setLocation(400, 100);
       setSize(850, 550);
       setVisible(true);
    }
@@ -207,7 +207,7 @@ public class NewCustomer extends JFrame implements ActionListener {
 
          try {
             String q = "insert into customer values('"+s1+"', '"+s2+"', '"+s3+"', '"+s4+"', '"+s5+"', '"+s6+"', '"+s7+"', '"+s8+"')";
-            String q1 = "update room set availability='Occupied'where roomnumber=" + s6;
+            String q1 = "update room set availability= 'Occupied' where roomnumber=" + s6;
             c.statement.executeUpdate(q);
             c.statement.executeUpdate(q1);
             JOptionPane.showMessageDialog(null, "Added successfully");
