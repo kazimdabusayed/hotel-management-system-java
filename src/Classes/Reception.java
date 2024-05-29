@@ -137,7 +137,7 @@ public class Reception extends JFrame{
          }
       });
 
-      JButton btnCO = new JButton("CHECKOUT");
+      JButton btnCO = new JButton("CheckOut");
       btnCO.setBounds(30, 270, 200, 30);
       btnCO.setBackground(Color.BLACK);
       btnCO.setForeground(Color.WHITE);
@@ -146,7 +146,7 @@ public class Reception extends JFrame{
          @Override
          public void actionPerformed(ActionEvent e) {
             try {
-               // new CheckOut();
+               new CheckOut();
             } catch (Exception E) {
                E.printStackTrace();
             }
