@@ -4,6 +4,8 @@ import java.awt.Choice;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 
 import javax.swing.*;
@@ -24,7 +26,7 @@ public class UpdateRoom extends JFrame{
       panel.add(label);
 
       JLabel label1 = new JLabel("Update Room Status");
-      label1.setBounds(124, 11, 222, 25);
+      label1.setBounds(124, 15, 222, 25);
       label1.setFont(new Font("Tahoma", Font.BOLD, 20));
       label1.setForeground(Color.WHITE);
       panel.add(label1);
@@ -77,6 +79,71 @@ public class UpdateRoom extends JFrame{
       JTextField textField5 = new JTextField();
       textField5.setBounds(248, 216, 140, 20);
       panel.add(textField5);
+
+      JButton update = new JButton("Update");
+      update.setBounds(120, 315, 95, 30);
+      update.setBackground(Color.BLACK);
+      update.setForeground(Color.WHITE);
+      panel.add(update);
+
+      update.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            try {
+               DatabaseConnection C = new DatabaseConnection();
+               String status = textField5.getText();
+               C.statement.executeUpdate("update room set cleaning_status = '"+status+"' where roomnumber = "+ textField3.getText());
+               JOptionPane.showMessageDialog(null, "Updated Successfully");
+               setVisible(false);
+            } catch (Exception E) {
+               E.printStackTrace();
+            }
+         }
+      });
+
+      // back button
+      JButton back = new JButton("Back");
+      back.setBounds(180, 365, 95, 30);
+      back.setBackground(Color.BLACK);
+      back.setForeground(Color.WHITE);
+      panel.add(back);
+      back.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            setVisible(false);
+         }
+      });
+
+      // check button
+      JButton check = new JButton("Check");
+      check.setBounds(60, 365, 95, 30);
+      check.setBackground(Color.BLACK);
+      check.setForeground(Color.WHITE);
+      panel.add(check);
+
+      check.addActionListener(new ActionListener() {
+         @Override
+         public void actionPerformed(ActionEvent e) {
+            String id = c.getSelectedItem();
+            String q = "select * from customer where number = '"+id+"'";
+            try {
+               DatabaseConnection c = new DatabaseConnection();
+               ResultSet resultSet = c.statement.executeQuery(q);
+               while (resultSet.next()) {
+                  textField3.setText(resultSet.getString("room"));
+               }
+
+               ResultSet resultSet1 = c.statement.executeQuery("select * from room where roomnumber =  '"+textField3.getText()+"'");
+
+               while (resultSet1.next()) {
+                  textField4.setText(resultSet1.getString("availability"));
+                  textField5.setText(resultSet1.getString("cleaning_status"));
+               }
+            } catch (Exception E) {
+               E.printStackTrace();
+            }
+         }
+      });
 
       // Frame
       setUndecorated(true);
