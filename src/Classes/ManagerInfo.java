@@ -34,7 +34,7 @@ public class ManagerInfo extends JFrame{
       }
 
       JButton back = new JButton("BACK");
-      back.setBounds(350, 500, 120, 30);
+      back.setBounds(400, 500, 120, 30);
       back.setBackground(Color.BLACK);
       back.setForeground(Color.WHITE);
       panel.add(back);
@@ -97,7 +97,7 @@ public class ManagerInfo extends JFrame{
       // Frame
       setUndecorated(true);
       setLayout(null);
-      setLocation(300, 100);
+      setLocation(340, 100);
       setSize(1000, 600);
       setVisible(true);
    }
