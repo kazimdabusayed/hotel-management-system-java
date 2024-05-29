@@ -96,7 +96,7 @@ public class LoginPage2 extends JFrame implements ActionListener{
             ResultSet resultSet = c.statement.executeQuery(q);
 
             if (resultSet.next()) {
-               // new Admin();
+               new Admin();
                setVisible(false);
             }
             else {
