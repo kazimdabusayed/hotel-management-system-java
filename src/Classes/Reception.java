@@ -8,7 +8,7 @@ import javax.swing.*;
 
 public class Reception extends JFrame{
    Reception() {
-      super("Reception | HotelZeroStar");
+      super("Reception | Hotel Zero Star");
 
       // Panels
       JPanel panel = new JPanel();
@@ -82,7 +82,7 @@ public class Reception extends JFrame{
          @Override
          public void actionPerformed(ActionEvent e) {
             try {
-               // new Department();
+               new Department();
             } catch (Exception E) {
                E.printStackTrace();
             }
