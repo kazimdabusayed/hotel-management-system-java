@@ -13,6 +13,7 @@ public class LoginPage2 extends JFrame implements ActionListener{
    JButton b1, b2;
 
    LoginPage2() {
+      super("Admin Login");
       // JLabel label1
       JLabel label1 = new JLabel("Username:");
       label1.setBounds(40, 20, 100, 30);

@@ -12,7 +12,7 @@ public class DashBoard extends JFrame implements ActionListener{
    JButton add, rec;
 
    DashBoard() {
-      super("Hotel Zero Star");
+      super("DashBoard | HotelZeroStar");
       // Reception Button
       rec = new JButton("Reception");
       rec.setBounds(425, 510, 140, 30);

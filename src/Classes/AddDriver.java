@@ -11,7 +11,6 @@ public class AddDriver extends JFrame implements ActionListener{
    JButton add, back;
 
    AddDriver() {
-
       // Panel
       JPanel panel = new JPanel();
       panel.setBounds(5, 5, 890, 490);

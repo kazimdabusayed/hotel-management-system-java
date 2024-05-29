@@ -8,6 +8,7 @@ import javax.swing.*;
 
 public class Reception extends JFrame{
    Reception() {
+      super("Reception | HotelZeroStar");
 
       // Panels
       JPanel panel = new JPanel();
