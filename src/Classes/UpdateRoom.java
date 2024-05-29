@@ -1,8 +1,11 @@
 package Classes;
 
+import java.awt.Choice;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.sql.ResultSet;
+
 import javax.swing.*;
 
 public class UpdateRoom extends JFrame{
@@ -25,6 +28,55 @@ public class UpdateRoom extends JFrame{
       label1.setFont(new Font("Tahoma", Font.BOLD, 20));
       label1.setForeground(Color.WHITE);
       panel.add(label1);
+
+      JLabel label2 = new JLabel("ID :");
+      label2.setBounds(25, 88, 46, 16);
+      label2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+      label2.setForeground(Color.WHITE);
+      panel.add(label2);
+
+      Choice c = new Choice();
+      c.setBounds(248, 88, 140, 20);
+      panel.add(c);
+      try {
+         DatabaseConnection C = new DatabaseConnection();
+         ResultSet resultSet = C.statement.executeQuery("select * from customer");
+         while (resultSet.next()) {
+            c.add(resultSet.getString("number"));
+         }
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+
+      JLabel label3 = new JLabel("Room Number :");
+      label3.setBounds(25, 129, 107, 16);
+      label3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+      label3.setForeground(Color.WHITE);
+      panel.add(label3);
+
+      JTextField textField3 = new JTextField();
+      textField3.setBounds(248, 129, 140, 20);
+      panel.add(textField3);
+
+      JLabel label4 = new JLabel("Availability:");
+      label4.setBounds(25, 174, 97, 16);
+      label4.setFont(new Font("Tahoma", Font.PLAIN, 14));
+      label4.setForeground(Color.WHITE);
+      panel.add(label4);
+
+      JTextField textField4 = new JTextField();
+      textField4.setBounds(248, 174, 140, 20);
+      panel.add(textField4);
+
+      JLabel label5 = new JLabel("Clean status:");
+      label5.setBounds(25, 216, 97, 16);
+      label5.setFont(new Font("Tahoma", Font.PLAIN, 14));
+      label5.setForeground(Color.WHITE);
+      panel.add(label5);
+
+      JTextField textField5 = new JTextField();
+      textField5.setBounds(248, 216, 140, 20);
+      panel.add(textField5);
 
       // Frame
       setUndecorated(true);
